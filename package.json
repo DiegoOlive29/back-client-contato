@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --ignore-watch node_modules src/app.ts"
+    "dev": "ts-node-dev --ignore-watch node_modules src/app.ts",
+    "typeorm": "typeorm-ts-node-commonjs"  
   },
   "repository": "git@github.com:DiegoOlive29/back-client-contato.git",
   "author": "Diego Oliveira <Diego.o.guimaraes29@gmail.com>",
