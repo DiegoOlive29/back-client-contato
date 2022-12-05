@@ -1,16 +1,17 @@
 import 'reflect-metadata'
 import express from 'express'
-import userRouter from './routes/users.routes'
+import userRouters from './routers/users.routes'
+import sessionRoutes from './routers/login.routes'
+const app = express()
 
-const app =express()
 
 
 app.use(express.json())
 
+app.use('/users',userRouters)
+app.use('/login',sessionRoutes)
 
+app.listen(3000,()=>{
+    console.log('server runnig in port 3000')
 
-app.listen(3001,()=> {
-    console.log("Listen in port 3001")
 })
-app.use('/users',userRouter)
-

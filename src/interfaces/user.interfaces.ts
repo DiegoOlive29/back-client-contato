@@ -1,9 +1,9 @@
 export interface IuserRequest{
     name: string
     email: string
-    phone: number
+    phone: string
     password?: string
-    date:  Date
+    date:  string
 }
 
 export interface IuserResponse extends IuserRequest{
