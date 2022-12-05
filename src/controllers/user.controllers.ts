@@ -3,10 +3,10 @@ import { createEmptyStatement } from 'typescript';
 import { IuserRequest } from '../interfaces/user.interfaces';
 import createUserService from '../services/createUser.services';
 
-const createUserController= (req: Request, res: Response) => {
+const createUserController = async (req: Request, res: Response) => {
     try{
         const user: IuserRequest = req.body
-        const createdUser = createUserService(user)
+        const createdUser = await createUserService(user)
         return res.json(createdUser)
 
     }catch (error) {

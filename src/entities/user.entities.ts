@@ -11,15 +11,15 @@ class User{
     @Column({length:160, unique: true})
     email : string
     
-    @Column()
-    phone: number
+    @Column({length:20})
+    phone: string
 
     
     @Column()
     password: string
     
     @Column()
-    date:  Date
+    date:  string
 
 }
 
