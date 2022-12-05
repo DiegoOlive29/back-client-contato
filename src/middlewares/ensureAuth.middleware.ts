@@ -14,14 +14,19 @@ const tokenAuthMiddleware = async(req: Request, res: Response, next: NextFunctio
 
     token = token.split(' ')[1]
 
-    jwt.verify(token, process.env.SECRET_KEY as string, (error, decoded) => {
+    jwt.verify(token, process.env.SECRET_KEY as string, (error, decoded: any) => {
         if(error){
             return res.status(401).json({
                 message: 'Invalid token'
             })
         }
-
-        next()
+        // req.user = {
+        //     id: decoded.sub
+            
+        // }
+       
+    
+        return next()
 
     })
 

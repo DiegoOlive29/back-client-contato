@@ -4,6 +4,7 @@ import { IloginRequest } from "../interfaces/login.interfaces";
 import {compare} from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
+import { decode } from "punycode";
 
 const createLoginService= async ({email,password}:IloginRequest): Promise<string> => {
     const userRepository = AppDataSource.getRepository(User)
@@ -23,7 +24,8 @@ const createLoginService= async ({email,password}:IloginRequest): Promise<string
 
     const token = jwt.sign(
         {
-            userId : user.id
+            userId : user.id,
+          
         },
         process.env.SECRET_KEY as string,
         {
