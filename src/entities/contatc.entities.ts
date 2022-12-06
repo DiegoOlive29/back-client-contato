@@ -1,7 +1,7 @@
 import{Entity , Column, PrimaryGeneratedColumn} from 'typeorm'
-import { Exclude } from 'class-transformer'
-@Entity('users')
-class User{
+
+@Entity('contact')
+class Contact{
     @PrimaryGeneratedColumn('uuid')
     id : string
 
@@ -18,13 +18,7 @@ class User{
     @Column({default:true})
     isActive: boolean
 
-    @Column()
-    @Exclude()
-    password: string
-    
-    @Column()
-    date:  string
 
 }
 
-export {User}
+export {Contact}
