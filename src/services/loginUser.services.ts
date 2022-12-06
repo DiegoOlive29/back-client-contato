@@ -5,6 +5,7 @@ import {compare} from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 import { decode } from "punycode";
+import { AppError } from "../errors/appError";
 
 const createLoginService= async ({email,password}:IloginRequest): Promise<string> => {
     const userRepository = AppDataSource.getRepository(User)
@@ -14,12 +15,12 @@ const createLoginService= async ({email,password}:IloginRequest): Promise<string
     })
     
     if(!user){
-        throw new Error('Invalid User or password')
+        throw new AppError('Invalid User or password',401)
     }
     const passwordMatch = await compare(password,user.password)
 
     if(!passwordMatch){
-        throw new Error('Invalid User or password')
+        throw new AppError('Invalid User or password',401)
     }
 
     const token = jwt.sign(
