@@ -1,30 +1,33 @@
-import{Entity , Column, PrimaryGeneratedColumn} from 'typeorm'
-import { Exclude } from 'class-transformer'
-@Entity('users')
-class User{
-    @PrimaryGeneratedColumn('uuid')
-    id : string
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Exclude } from "class-transformer";
+import { Contact } from "./contatc.entities";
 
-    @Column({length:160})
-    name : string
-    
-    @Column({length:160, unique: true})
-    email : string
-    
-    @Column({length:20})
-    phone: string
+@Entity("users")
+class User {
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-     
-    @Column({default:true})
-    isActive: boolean
+  @Column({ length: 160 })
+  name: string;
 
-    @Column()
-    @Exclude()
-    password: string
-    
-    @Column()
-    date:  string
+  @Column({ length: 160, unique: true })
+  email: string;
 
+  @Column({ length: 20 })
+  phone: string;
+
+  @Column({ default: true })
+  isActive: boolean;
+
+  @Column()
+  @Exclude()
+  password: string;
+
+  @Column()
+  date: string;
+
+  @OneToMany(() => Contact, (contact) => contact.user)
+  contact: Contact[];
 }
 
-export {User}
+export { User };
