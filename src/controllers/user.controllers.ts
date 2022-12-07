@@ -3,6 +3,7 @@ import { IuserRequest, IuserUpdateRequest } from '../interfaces/user.interfaces'
 import createUserService from '../services/createUser.services';
 import updateUserService from '../services/updateUser.services';
 import { instanceToPlain } from 'class-transformer'
+import deleteUserService from '../services/deleteuser.services';
 const createUserController = async (req: Request, res: Response) => {
     
         const user: IuserRequest = req.body
@@ -20,5 +21,12 @@ const updateUserController = async (req: Request, res: Response) => {
 
     
 }
+const deleteUserControler= async (req: Request, res: Response) => {
+    
+        const id = req.params.id
+        await deleteUserService(id)
+        return res.status(204).send()
 
-export { createUserController,updateUserController}
+}
+
+export { createUserController,updateUserController,deleteUserControler}

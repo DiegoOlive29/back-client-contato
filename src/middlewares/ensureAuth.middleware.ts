@@ -20,10 +20,10 @@ const tokenAuthMiddleware = async(req: Request, res: Response, next: NextFunctio
                 message: 'Invalid token'
             })
         }
-        // req.user = {
-        //     id: decoded.sub
+         req.user = {
+             id: decoded.sub
             
-        // }
+         }
        
     
         return next()
