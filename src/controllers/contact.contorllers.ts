@@ -10,7 +10,7 @@ const createContactController = async (req: Request, res: Response) =>{
     const id  = req.user.id
     
     const createdContact = await createContact(dados,id)
-    return res.status(201).json({createdContact})
+    return res.status(201).json(createdContact)
 
 
 }
